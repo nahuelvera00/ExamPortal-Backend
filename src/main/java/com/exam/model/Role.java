@@ -1,6 +1,8 @@
 package com.exam.model;
 
-import jakarta.persistence.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.persistence.*;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -10,19 +12,17 @@ import java.util.Set;
 public class Role {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long roleId;
     private String roleName;
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "role")
-    private Set<UserRole> userRoles = new HashSet<>();
 
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "role")
+    @JsonIgnore
+    private Set<UserRole> userRoles = new HashSet<>();
 
 
     public Role() {
     }
-
-
-
 
     public Role(Long roleId, String roleName) {
         this.roleId = roleId;
