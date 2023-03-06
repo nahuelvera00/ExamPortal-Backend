@@ -68,6 +68,8 @@ public class AuthenticateController {
         }
     }
 
+    //Return the detail of current user
+
     @GetMapping("/current-user")
     public UserDetails getCurrentUser(Principal principal)
     {
