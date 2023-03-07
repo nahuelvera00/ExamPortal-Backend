@@ -9,6 +9,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.embedded.undertow.UndertowServletWebServer;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -18,6 +19,9 @@ public class ExamserverApplication implements CommandLineRunner {
 
 	@Autowired
 	private UserService userService;
+
+	@Autowired
+	private BCryptPasswordEncoder bCryptPasswordEncoder;
 
 	public static void main(String[] args) {
 		SpringApplication.run(ExamserverApplication.class, args);
@@ -32,7 +36,7 @@ public class ExamserverApplication implements CommandLineRunner {
 		user.setFirstName("John");
 		user.setLastName("Conan");
 		user.setUsername("p4rfct0");
-		user.setPassword("password");
+		user.setPassword(this.bCryptPasswordEncoder.encode(("password")));
 		user.setEmail("p4rfct0@gmail.com");
 		user.setProfile("default.png");
 		user.setPhone("223111111");
@@ -51,6 +55,8 @@ public class ExamserverApplication implements CommandLineRunner {
 		User user1 = this.userService.createUser(user, userRoleSet);
 		System.out.println(user1);
 
-		*/
+		 */
+
+
 	}
 }
