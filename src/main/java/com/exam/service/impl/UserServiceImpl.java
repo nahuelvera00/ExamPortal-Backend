@@ -1,5 +1,6 @@
 package com.exam.service.impl;
 
+import com.exam.helper.UserFoundException;
 import com.exam.model.User;
 import com.exam.model.UserRole;
 import com.exam.repository.RoleRepository;
@@ -27,7 +28,7 @@ public class UserServiceImpl implements UserService {
 
         if(local != null){
             System.out.println("User is already there!!!");
-            throw new Exception("User is already present!!!");
+            throw new UserFoundException();
         } else {
             //user create
             for(UserRole ur:userRoles){
