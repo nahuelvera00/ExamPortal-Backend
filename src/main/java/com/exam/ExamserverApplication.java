@@ -32,6 +32,7 @@ public class ExamserverApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		System.out.println("Starting Code");
 
+		/*
 		try {
 			User user = new User();
 			user.setFirstName("nahuel");
@@ -58,6 +59,7 @@ public class ExamserverApplication implements CommandLineRunner {
 		} catch (UserFoundException e) {
 			e.printStackTrace();
 		}
+		 */
 
 	}
 }
